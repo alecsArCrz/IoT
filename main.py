@@ -5,6 +5,8 @@ from Flask import Flask
 app=Flask(name)
 
 base=pd.read_excel("BaseBTR.xlsx")
+def Principal():
+  return "Esta es una API que te muetra Los albumnes de BTR"
 
 @app.route("/Por_Numero/<Numero>")
 def porNumero(Numero):
@@ -17,9 +19,9 @@ def porNumero(Numero):
     resultados=base[base["Tipo"]==Tipo]
     return resultados
 
-@app.route("/Por_Peso/<Peso1>/<Peso2>")
-  def PorPeso(Peso1,Peso2):
-    resultados=base[(base["Peso"]>Peso1) & (base["Peso"]<Peso2)]
+@app.route("/Por_Nombre/<PesNombre1>/<Nombre2>")
+  def PorNombre(Nombre1,Nombre2):
+    resultados=base[(base["Nombre"]>Nombre1) & (base["Nombre"]<Nombre2)]
     return resultados
 
 if name=="main":
